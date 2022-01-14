@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables</title>
+
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1 class="head">Upgrading spacing, blur and Colour</h1>
+    <div class="controls">
+        <label for="Spacing">Spacing:
+            <input type="range" name="Spacing" id="Spacing" min="10" max="200" value="10" data-sizing="px">
+        </label>
+        <label for="Blur">Blur:
+            <input type="range" name="Blur" id="Blur" min="0" max="25" value="10" data-sizing="px">
+        </label>
+        <label for="Colour">Colour:
+            <input type="color" id = "Colour" name="Colour" value="#ffc600">
+        </label>
+    </div>
+
+    <img src="https://cdn.pixabay.com/photo/2022/01/06/06/08/katun-river-6918707_960_720.jpg">
+
+
+    <script>
+        const input = document.querySelectorAll('.controls input');
+        
+        function update(e) {
+            const suffix = this.dataset.sizing || '';
+
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        input.forEach(input => input.addEventListener('change', update));
+        input.forEach(input => input.addEventListener('mousemove', update));
+
+    </script>
+</body>
+</html>
